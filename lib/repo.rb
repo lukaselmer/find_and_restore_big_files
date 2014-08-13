@@ -17,10 +17,13 @@ class Repo
   end
 
   def generate_hashes
-    # code here
+    generate_paths.map do |path|
+      Digest::MD5.file(path).hexdigest
+    end
   end
 
-  def checkout_older_revision!
+  def checkout_older_revision!(commit)
+    #p commit
     # code here
   end
 
@@ -28,8 +31,12 @@ class Repo
     # code here
   end
 
-  def contains_older_revision?
-    # code here
+  def each_commit(&block)
+    walker = Rugged::Walker.new(@rugged_repo)
+    walker.sorting(Rugged::SORT_TOPO)
+    walker.push('master')
+    walker.each(&block)
+    walker.reset
   end
 
   private

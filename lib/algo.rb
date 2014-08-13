@@ -9,8 +9,9 @@ class Algo
   end
 
   def run!
-    while @repo.contains_older_revision? do
-      @repo.checkout_older_revision!
+    @repo.each_commit do |commit|
+      @repo.checkout_older_revision!(commit)
+
       @repo.changed_files.each do |file| # for every [changed|removed|added]
         begin
           # check if path in a newer version exists
