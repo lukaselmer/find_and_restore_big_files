@@ -1,11 +1,11 @@
 class Algo
   attr_reader :lost_files
 
-  def initialize(source_dir)
+  def initialize(source_dir, logger)
     @source_dir = source_dir
     @repo = Repo.new(@source_dir)
     @result_tracker = ResultTracker.new(@repo)
-    @lost_files = LostFiles.new
+    @lost_files = LostFiles.new(logger)
   end
 
   def run!

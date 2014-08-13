@@ -3,12 +3,13 @@ class LostFiles
 
   attr_reader :all
 
-  def initialize
+  def initialize(logger)
+    @logger = logger
     @all = []
   end
 
   def store(file)
-    puts "Lost file found: #{file.commit}: #{file.path}"
+    @logger.info("Lost file found: #{file.commit}: #{file.path}")
     @all << LostFile.new(file.commit, file.path)
   end
 
