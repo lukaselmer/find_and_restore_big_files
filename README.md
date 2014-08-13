@@ -1,6 +1,12 @@
 Find and restore big files
 ==========================
 
+Usage
+-----
+
+SOURCE_DIR=/path/to/git/repo bundle exec ruby run.rb
+
+
 Problem
 -------
 
