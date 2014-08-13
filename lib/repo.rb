@@ -64,5 +64,4 @@ class Repo
   def checkout_master!
     @rugged_repo.checkout('master')
   end
-
 end
