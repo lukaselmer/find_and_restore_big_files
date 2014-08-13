@@ -27,5 +27,7 @@ class Algo
         end
       end
     end
+  ensure
+    `cd #{@source_dir} && git checkout master`
   end
 end
