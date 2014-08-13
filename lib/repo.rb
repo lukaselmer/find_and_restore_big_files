@@ -37,12 +37,12 @@ class Repo
     @current_commit = commit
 
     `cd #{@source_dir} && git checkout #{@previous_commit.oid} 2>&1`
-    #@rugged_repo.checkout(@current_commit.oid)
+    # this would be better if it worked: @rugged_repo.checkout(@current_commit.oid)
   end
 
   def changed_files
     # diff.find_similar! could be useful here...
-    #p @current_commit.diff(@previous_commit).deltas #.collect(&:status)
+    # p @current_commit.diff(@previous_commit).deltas #.collect(&:status)
     @current_commit.diff(@previous_commit).deltas.reject do |delta|
       # %i(added modified).include? delta.status
       delta.status == :deleted
