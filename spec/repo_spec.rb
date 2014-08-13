@@ -11,7 +11,6 @@ RSpec.describe Repo do
     expect(paths).to include('README.md', 'xxx/testfile5.txt')
   end
 
-
   it 'should iterate over the commits' do
     repo = Repo.new(EXAMPLE_REPO_PATH)
 
