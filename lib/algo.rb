@@ -21,7 +21,7 @@ class Algo
           next if @result_tracker.content_exists?(file)
 
           # if algo gets to here, file is a lost file
-          @lost_files.store(@repo.revision, file.path)
+          @lost_files.store(file)
         ensure
           @result_tracker.store(file)
         end

@@ -10,12 +10,13 @@ class ResultTracker
   end
 
   def store(file)
-    @hashes << file.hash unless @hashes.include?(file.hash)
+    hash = @repo.generate_hash(file.path)
+    @hashes << hash unless @hashes.include?(hash)
     @paths << file.path unless @paths.include?(file.path)
   end
 
   def content_exists?(file)
     # or, better: store hash s.t. compare_files(file1.hash, file2.hash) = true iff file1 is at least 90% similar to file2
-    @hashes.any? { |hash| file.hash == hash }
+    @hashes.any? { |hash| @repo.generate_hash(file.path) == hash }
   end
 end

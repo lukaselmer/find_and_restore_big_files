@@ -8,7 +8,7 @@ RSpec.describe Repo do
     repo = Repo.new(EXAMPLE_REPO_PATH)
     paths = repo.generate_paths
     expect(paths.length).to eq(10)
-    expect(paths).to include("#{EXAMPLE_REPO_PATH}/README.md", "#{EXAMPLE_REPO_PATH}/xxx/testfile5.txt")
+    expect(paths).to include('README.md', 'xxx/testfile5.txt')
   end
 
 

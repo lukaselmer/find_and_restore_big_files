@@ -5,13 +5,11 @@ class LostFiles
 
   def initialize
     @all = []
-    @all << LostFile.new('some-revision', 'xxx/testfile8.txt')
-    @all << LostFile.new('some-other-revision', 'aaa/testfile11.txt')
   end
 
-  def store(revision, file_path)
-    puts "#{file}: #{revision}"
-    @all << LostFile.new(revision, file_path)
+  def store(file)
+    puts "Lost file found: #{file.commit}: #{file.path}"
+    @all << LostFile.new(file.commit, file.path)
   end
 
   def to_s
